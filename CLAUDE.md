@@ -14,7 +14,7 @@ python3 agent.py --bugun 2026-11-19       # fix the reference date (urgency depe
 python3 agent.py --notlar DIR --rapor OUT.md
 ```
 
-There is no test suite, linter, or build step. To check a change, run the agent with a fixed `--bugun` date; the sample notes are dated around 2026-11-19, so that date exercises every case (overdue, due today, due soon, keyword-urgent, not urgent, plus a non-action warning). `rapor.md` is generated and gitignored.
+There is no test suite, linter, or build step. To check a change, run the agent with a fixed `--bugun` date; the sample notes are dated around 2026-11-19, so that date exercises every case (overdue, due today, due soon, keyword-urgent, not urgent, plus a non-action warning). `rapor.md` is committed as a sample output; regenerate it with `--bugun 2026-11-19` so the diff stays stable.
 
 ## Architecture
 
