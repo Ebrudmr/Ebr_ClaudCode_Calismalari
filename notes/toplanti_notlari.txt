@@ -1,0 +1,27 @@
+TOPLANTI NOTLARI - Ürün Ekibi
+=============================
+
+### 12.11.2026 - Haftalık Ürün Toplantısı
+Katılımcılar: Ayşe, Mehmet, Zeynep, Can
+
+- Yeni mobil sürümün beta testleri genel olarak olumlu geçti.
+- Müşteri geri bildirimlerinde en çok şikayet giriş ekranının yavaşlığı hakkında.
+- AKSİYON: Giriş ekranı performans analizini çıkar @Mehmet - son tarih 20.11.2026
+- Pazarlama bütçesi Q1 için henüz netleşmedi, finans ile tekrar konuşulacak.
+- TODO: Beta kullanıcılarına teşekkür e-postası gönder @Zeynep 25.11.2026
+- Can yıllık izne çıkıyor (01.12.2026 - 08.12.2026).
+
+### 17.11.2026 - Müşteri Görüşmesi (Acme Lojistik)
+- Müşteri sözleşme yenilemesi için fiyat teklifi bekliyor.
+- ACİL: Acme için revize fiyat teklifini hazırla @Ayşe - son tarih 19.11.2026
+- Entegrasyon dokümanı eski API sürümünü gösteriyor, güncellenmeli.
+- [ ] API dokümantasyonunu v3'e göre güncelle @Can 2026-12-05
+- Müşteri ayrıca raporlama ekranında Excel çıktısı istedi; yol haritasına not alındı.
+
+### 18.11.2026 - Teknik Sync
+- Sunucu disk kullanımı %91'e ulaştı, kritik seviyeye yakın!
+- Aksiyon: Log rotasyonunu hemen devreye al @Mehmet
+- Yapılacak: Yedekleme politikasını gözden geçir @Zeynep 10.12.2026
+- Sprint retrosu 15.11.2026'da yapılmalıydı, ertelendi.
+- [ ] Ertelenen sprint retrosunu planla @Ayşe 15.11.2026
+- Genel not: Ofis Wi-Fi şifresi değişti, IT duyuru yapacak.
