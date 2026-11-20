@@ -17,8 +17,7 @@ python3 agent.py --notlar baska_klasor --rapor cikti.md
 - `tools.py` — ajanın araçları: `read_files` (klasörü okur), `extract_actions` (aksiyon ve acil işleri ayıklar)
 - `agent.py` — Plan -> Araç Kullan -> Raporla döngüsü; sonucu ekrana ve `rapor.md`'ye yazar
 
-## Günlük otomatik rapor
+## GitHub'da rapor oluşturma
 
-GitHub Actions her sabah 09:00'da (Türkiye saati) ajanı çalıştırır ve `rapor.md` değiştiyse repoya kaydeder
-(`.github/workflows/gunluk-rapor.yml`). Elle çalıştırmak için: GitHub'da **Actions → Günlük rapor → Run workflow**.
-Zamanlama yalnızca `main` dalında çalışır.
+GitHub'da **Actions → Rapor oluştur → Run workflow** ile ajan çalıştırılır ve `rapor.md` değiştiyse repoya kaydedilir
+(`.github/workflows/gunluk-rapor.yml`). Otomatik zamanlama yoktur; iş akışı yalnızca elle başlatıldığında çalışır.
