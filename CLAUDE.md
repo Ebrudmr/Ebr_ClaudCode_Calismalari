@@ -14,7 +14,7 @@ python3 agent.py --bugun 2026-11-19       # fix the reference date (urgency depe
 python3 agent.py --notlar DIR --rapor OUT.md
 ```
 
-There is no test suite, linter, or build step. To check a change, run the agent with a fixed `--bugun` date; the sample notes are dated around 2026-11-19, so that date exercises every case (overdue, due today, due soon, keyword-urgent, not urgent, plus a non-action warning). Write check runs elsewhere (`--rapor /tmp/x.md`): `rapor.md` is owned by the daily workflow (below), so don't regenerate or commit it by hand.
+There is no test suite, linter, or build step. To check a change, run the agent with a fixed `--bugun` date; the sample notes are dated around 2026-11-19, so that date exercises every case (overdue, due today, due soon, keyword-urgent, not urgent, plus a non-action warning). Write check runs elsewhere (`--rapor /tmp/x.md`): `rapor.md` is updated by the report workflow (below), so don't regenerate or commit it by hand.
 
 ## Architecture
 
@@ -28,6 +28,6 @@ There is no test suite, linter, or build step. To check a change, run the agent 
 - An action is urgent if it contains a keyword in `URGENT_KEYWORDS`, or its deadline is past, today, or within `URGENT_WINDOW_DAYS`. Non-action lines that contain urgent keywords become `uyarilar` (warnings).
 - Use `tr_lower()` rather than `str.lower()` before matching. Plain `.lower()` turns `İ` into two characters, which breaks keyword matching and the character offsets used to slice the original line.
 
-## Daily automation
+## Report workflow
 
-`.github/workflows/gunluk-rapor.yml` runs `python agent.py` every day at 06:00 UTC (09:00 Türkiye, set via `TZ: Europe/Istanbul` so "today" is the Turkish date) and commits `rapor.md` as `github-actions[bot]` only if it changed. It can also be started manually with `workflow_dispatch`. Scheduled workflows run only from the default branch (`main`). Because the bot commits daily, pull before pushing to `main`.
+`.github/workflows/gunluk-rapor.yml` (named "Rapor oluştur") runs only when started manually (`workflow_dispatch`; there is no schedule — the user removed the daily run, so don't add one back unless asked). It runs `python agent.py` with `TZ: Europe/Istanbul` so "today" is the Turkish date, and commits `rapor.md` as `github-actions[bot]` only if it changed. Pull before pushing to `main` after a run.
