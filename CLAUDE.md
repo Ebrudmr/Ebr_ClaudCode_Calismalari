@@ -14,7 +14,7 @@ python3 agent.py --bugun 2026-11-19       # fix the reference date (urgency depe
 python3 agent.py --notlar DIR --rapor OUT.md
 ```
 
-There is no test suite, linter, or build step. To check a change, run the agent with a fixed `--bugun` date; the sample notes are dated around 2026-11-19, so that date exercises every case (overdue, due today, due soon, keyword-urgent, not urgent, plus a non-action warning). `rapor.md` is committed as a sample output generated with `--bugun 2026-11-20`; regenerate it with that same date unless the user asks for a new one, so the diff stays stable.
+There is no test suite, linter, or build step. To check a change, run the agent with a fixed `--bugun` date; the sample notes are dated around 2026-11-19, so that date exercises every case (overdue, due today, due soon, keyword-urgent, not urgent, plus a non-action warning). Write check runs elsewhere (`--rapor /tmp/x.md`): `rapor.md` is owned by the daily workflow (below), so don't regenerate or commit it by hand.
 
 ## Architecture
 
@@ -27,3 +27,7 @@ There is no test suite, linter, or build step. To check a change, run the agent 
 - `#` header lines set the meeting date for the lines below them.
 - An action is urgent if it contains a keyword in `URGENT_KEYWORDS`, or its deadline is past, today, or within `URGENT_WINDOW_DAYS`. Non-action lines that contain urgent keywords become `uyarilar` (warnings).
 - Use `tr_lower()` rather than `str.lower()` before matching. Plain `.lower()` turns `İ` into two characters, which breaks keyword matching and the character offsets used to slice the original line.
+
+## Daily automation
+
+`.github/workflows/gunluk-rapor.yml` runs `python agent.py` every day at 06:00 UTC (09:00 Türkiye, set via `TZ: Europe/Istanbul` so "today" is the Turkish date) and commits `rapor.md` as `github-actions[bot]` only if it changed. It can also be started manually with `workflow_dispatch`. Scheduled workflows run only from the default branch (`main`). Because the bot commits daily, pull before pushing to `main`.
